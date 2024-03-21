@@ -13,12 +13,11 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Code {
-  id            Int      @id @default(autoincrement())
-  username      String
-  codeLanguage  String
-  stdin         String
-  sourceCode    String
-  timestamp     DateTime @default(now())
+  id           Int      @id @default(autoincrement())
+  username     String
+  codeLanguage String
+  stdin        String
+  sourceCode   String   @db.VarChar(2000)
+  timestamp    DateTime @default(now())
 }

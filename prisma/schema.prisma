@@ -19,5 +19,6 @@ model Code {
   codeLanguage String
   stdin        String
   sourceCode   String   @db.VarChar(2000)
+  stdout       String   @default("") 
   timestamp    DateTime @default(now())
 }

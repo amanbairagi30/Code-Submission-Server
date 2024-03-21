@@ -2,7 +2,7 @@ const router = require('express').Router();
 const prisma = require('../config/dbconfig');
 
 router.post("/submit", async (req, res) => {
-    const { username, codeLanguage, stdin, sourceCode } = req.body;
+    const { username, codeLanguage, stdin, sourceCode , stdout } = req.body;
     try {
         const codeSnippet = await prisma.code.create({
             data: {
@@ -10,6 +10,7 @@ router.post("/submit", async (req, res) => {
                 codeLanguage,
                 stdin,
                 sourceCode,
+                stdout
             },
         });
         res.status(200).json({ success: true, message: `${username} , your submission has been recorded successfully`, codeSnippet });
